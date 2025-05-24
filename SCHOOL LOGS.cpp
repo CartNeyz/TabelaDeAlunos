@@ -12,6 +12,19 @@ struct Aluno {
     float A1 = 0, A2 = 0, AF = 0;
 };
 
+int Filtrar() {
+    int opcaofiltro;
+    system("cls");
+    cout << "\nOrdernar por...";
+    cout << "\nAprovados";
+    cout << "\nReprovados";
+    cout << "\nMaiores Notas";
+    cout << "\nMenores Notas";
+    cin >> opcaofiltro;
+    
+    return opcaofiltro;
+    
+}
 
 int Logo() {
     cout << " $$$$$$\\   $$$$$$\\  $$\\   $$\\  $$$$$$\\   $$$$$$\\  $$\\             $$\\       $$$$$$\\   $$$$$$\\   $$$$$$\\ " << endl;
@@ -36,13 +49,16 @@ int main() {
     system("cls");
 
     do {
+        
         cout << "\n Menu \n";
         cout << "1. Tabela de Notas\n";
-        cout << "2. Incluir Notas\n";
-        cout << "3. Créditos\n";
-        cout << "4. Sair\n";
+        cout << "2. Incluir Notas";
+        cout << "3. Filtrar\n";
+        cout << "4. Créditos\n";
+        cout << "5. Sair\n";
         cout << "Escolha uma opcao: ";
         cin >> opcao;
+        
 
         switch (opcao) {
         case 1:
@@ -74,23 +90,6 @@ int main() {
                         << setw(10) << a.A2
                         << setw(10) << a.AF
                         << setw(15) << situacao << endl;
-
-                    char decisao
-                        cout << "Filtrar? [S/N]";
-                    cin >> decisao;
-
-                    if (decisao == "S" || "s") {
-                        cout << "\n Opcoes de Filtragem\n";
-                        cout << "1. Filtrar por aprovados";
-                        cout << "2. Filtrar por reprovados";
-                        cin >> filtro;
-
-        case 1:
-            if (situacao == Aprovado)
-
-
-
-                    }
                 }
             }
             break;
@@ -127,6 +126,11 @@ int main() {
             break;
 
         case 3:
+          system("cls");
+          Filtrar();
+          break;
+          
+        case 4:
             Logo();
             cout << "\nCódigo originalmente desenvolvido por Henrique Bergotti, Hugo Trindade, Eduardo Felipe e Lucas Henrique\n";
             cout << "Pressione ENTER para retornar.";
@@ -134,17 +138,18 @@ int main() {
             cin.get();
             system("cls");
             break;
-
-        case 4:
+            
+        case 5:
             cout << "Saindo...";
             break;
 
         default:
             cout << "Opcao invalida.\n";
         }
-
-    } while (opcao != 4);
-
+    
+    } while (opcao != 5);
+    
     return 0;
+    
 }
-s
+    
