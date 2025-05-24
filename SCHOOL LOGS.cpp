@@ -16,10 +16,10 @@ int Filtrar() {
     int opcaofiltro;
     system("cls");
     cout << "\nOrdernar por...";
-    cout << "\nAprovados";
-    cout << "\nReprovados";
-    cout << "\nMaiores Notas";
-    cout << "\nMenores Notas";
+    cout << "\n1. Aprovados";
+    cout << "\n2. Reprovados";
+    cout << "\n3. Maiores Notas";
+    cout << "\n4. Menores Notas";
     cin >> opcaofiltro;
     
     return opcaofiltro;
@@ -52,7 +52,7 @@ int main() {
         
         cout << "\n Menu \n";
         cout << "1. Tabela de Notas\n";
-        cout << "2. Incluir Notas";
+        cout << "2. Incluir Notas\n";
         cout << "3. Filtrar\n";
         cout << "4. Créditos\n";
         cout << "5. Sair\n";
@@ -90,6 +90,10 @@ int main() {
                         << setw(10) << a.A2
                         << setw(10) << a.AF
                         << setw(15) << situacao << endl;
+                    
+                    cout << "Pressione ENTER para retornar ao Menu.";
+                    cin.get();
+                    system("cls");
                 }
             }
             break;
