@@ -130,4 +130,124 @@ int main() {
     	cout << "  |  \\/  |                 "<< endl;
 		cout << "  | \\  / | ___ _ __  _   _ "<< endl;
 		cout << "  | |\\/| |/ _ \\ '_ \\| | | |"<< endl;
-		cout << "  | |  | |  __/ |
+		cout << "  | |  | |  __/ | | | |_| |"<< endl;
+		cout << "  |_|  |_|\\___|_| |_|\\__,_|"<< endl;
+        cout << "\n Menu \n";
+        cout << "1. Tabela de Notas\n";
+        cout << "2. Incluir Notas\n";
+        cout << "3. Filtrar\n";
+        cout << "4. Creditos\n";
+        cout << "5. Sair\n";
+        cout << "Escolha uma opcao: ";
+        cin >> opcao;
+// cria um laço de repetição que tem como principio o print do menu, tendo 5 opções, dependendo do input (1-5) o console retorna uma função especifica, cada uma dessas funções está armazenada em uma switch case, o input recebido será declarado pelo computador como a opção escolhida pelo usuario
+
+        switch (opcao) {
+            case 1:
+                if (alunos.empty()) {
+                    cout << "Nenhum aluno cadastrado.\n";
+                    system("pause");
+                } else {
+                    cout << left << setw(15) << "Nome"
+                     	 << setw(10) << "rgm"
+                         << setw(10) << "A1"
+                         << setw(10) << "A2"
+                         << setw(10) << "AF"
+                         << setw(15) << "Situacao" << endl;
+
+                    for (const Aluno& a : alunos) {
+                        float media = a.A1 + a.A2;
+                        string situacao;
+
+                        if (media >= 6) {
+                            situacao = "Aprovado";
+                        } else {
+                            float novaMedia = (a.A1 < a.A2 ? a.AF + a.A2 : a.A1 + a.AF);
+                            situacao = novaMedia >= 6 ? "Aprovado c/ AF" : "Reprovado";
+                        }
+
+                        cout << left << setw(15) << a.nome
+                        	 << setw(10) << a.rgm	
+                             << setw(10) << a.A1
+                             << setw(10) << a.A2
+                             << setw(10) << a.AF
+                             << setw(15) << situacao << endl;
+                    }
+                }
+                cout << "\nPressione ENTER para retornar ao menu.";
+                cin.ignore();
+                cin.get();
+            	system("cls");
+                break;
+// O código começa verificando se tem alunos cadastrados na tabela, caso não tenha, então ele vai printar dizendo que ninguem foi cadastrado, pausa o sistema e então retorna ao menu. caso tenha alunos cadastrados, retorna uma tabela contendo o nome dele, rgm, nota e situacao, e como alternativa de checagem o console executa uma formula condicional para checar se o aluno está realmente aprovado
+
+            case 2:
+                cout << "Digite o nome do aluno:";
+                cin.ignore(1000, '\n');
+                getline(cin, aluno.nome);
+                
+    			cout << "Digite o RGM do aluno (maximo 8 caracteres): ";				
+				getline(cin, aluno.rgm);
+
+    			while (aluno.rgm.length() > 8 || aluno.rgm.length() < 8 || aluno.rgm.empty()) {
+       			 	cout << "RGM invalido. Insira um RGM entre 1 e 8 caracteres:";
+       				getline(cin, aluno.rgm);
+				}
+				
+                cout << "Digite a nota A1: ";
+                cin >> aluno.A1;
+                while (aluno.A1 < 0 || aluno.A1 > 5) {
+                    cout << "Digite A1 novamente: ";
+                    cin >> aluno.A1;
+                }
+
+                cout << "Digite a nota A2: ";
+                cin >> aluno.A2;
+                while (aluno.A2 < 0 || aluno.A2 > 5) {
+                    cout << "Digite A2 novamente: ";
+                    cin >> aluno.A2;
+                }
+
+                if ((aluno.A1 + aluno.A2) < 6) {
+                    cout << "Voce foi reprovado. Digite a nota da AF: ";
+                    cin >> aluno.AF;
+                } else {
+                    aluno.AF = 0;
+                }
+
+                alunos.push_back(aluno);
+                system("cls");
+                break;
+// Esta funcao vai pedir o nome do aluno, o  cin.ignore vai limpar o buff apos o recebimento da variavel input (para prevenir do console entrar em conflito com o laço de repetição, dessa forma ele vai identificar os prints e ignora-los), apos receber essa variavel input e declarar ela como nome do aluno iremos para o rgm, agora é escrito um comando de laço de repeticao: o console pede o rgm e inicia uma formula de condicional que verifica que caso a quantidades de caracteres da string seja menor que 8 e maior que 8, ira pedir para inserir um rgm valido, em outras palavras se a quantidade de caracteres dessa string nao for identica a 8 ele ira printar um erro, isso vai se repetir até que ele tenha a quantidade correta. Apos isso vai pedir as notas, seguindo a mesma formula, com o diferencial que o input é tratado como int e nao string, isso pesa na forma como se manipula essa informação, então caso o valor do input seja maior que 5 é pedido novamente a nota, caso fosse menor que 0 tambem. e por ultimo pede a nota de reforço, caso a soma dessas notas seja menor que 6 se considera reprovado, e entao para aprovar o aluno, o mesmo deve inserir uma nota de reforço, caso não haja necessidade, considera-se a nota de reforço igual a 0, não influenciando nas formulas das demais funções
+
+            case 3:
+                system("cls");
+                Filtrar(alunos);
+                break;
+// Esse código executa uma limpa de terminal, depois utiliza da função filtrar, e dentro dessa função se usa os valores (alunos) armazenados no vetor Aluno, o código se encerra.
+
+            case 4:
+                Logo();
+                cout << "\nCodigo originalmente desenvolvido por Henrique Bergotti, Hugo Trindade, Eduardo Felipe e Lucas Henrique\n";
+                cout << "Pressione ENTER para retornar.";
+                cin.ignore();
+                cin.get();
+                system("cls");
+                break;
+// É printado a logo do projeto, o console printa o nome dos integrantes, pede o enter para prosseguir, ignore vai ignorar o buffer anterior, o cin.get vai pedir o enter e o system cls vai limpar o terminal, o código se encerra
+
+            case 5:
+                cout << "Saindo...";
+                break;
+// O mais facil, o console printa saindo... e o codigo se encerra
+
+            default:
+                cout << "Opcao invalida.\n";
+// caso o usuario insira uma opcao que nao é presente no menu, se printa que o codigo é invalido e retorna o menu        
+        }
+
+    } while (opcao != 5);
+// enquanto a opcao escolhida pelo usuario nao for 5 (ou seja, nao executar a funcao de saida) o codigo jamais vai se encerrar, a menos que uma força maior a obrigue
+    return 0;
+}
+// no fim, sempre ira retornar a funcao principal menu
