@@ -62,7 +62,7 @@ void EditarAluno(vector<Aluno>& alunos) {
         }
       
       if (encontrado = true){
-         // Editar nome do aluno
+         // Edita o nome do aluno
         cout << "\nDigite o novo nome (ou pressione ENTER para não alterar): ";
         cin.ignore();  // Limpa o buffer do cin
         string novoNome;
@@ -87,8 +87,8 @@ void EditarAluno(vector<Aluno>& alunos) {
       int novaNotaA2;
       cin >> novaNotaA2;
       while (novaNotaA2 < 0 || > 5) {
-        cout << "Insira uma nota válida (0-5)"
-        cin >> novaNotaA2
+        cout << "Insira uma nota válida (0-5)";
+        cin >> novaNotaA2;
       }
       a.A2 = novaNotaA2;
 }
@@ -96,6 +96,7 @@ void EditarAluno(vector<Aluno>& alunos) {
       float novaMedia = (a.A1 < a.A2 ? a.AF + a.A2 : a.A1 + a.AF);
       situacao = novaMedia >= 6 ? "Aprovado c/ AF" : "Reprovado";
       cout << "\n Situacao do Aluno:" situacao << endl;
+      cout << "\nNome alterado para:" << a.nome << "- Nota A1:" << a.A1 "- Nota A2:" << a.A2 "- Situacao:" << situacao << endl;
       } else {
       cout << "\n Aluno nao encontrado." << endl;
       }
