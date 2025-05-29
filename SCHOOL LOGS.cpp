@@ -46,6 +46,62 @@ void Login() {
 
 // valida o acesso do login
 
+void EditarAluno(vector<Aluno>& alunos) {
+    string rgm;
+    bool encontrado = false;
+    Aluno a;
+    
+    cout << "\n Insira o RGM do Aluno que deseja editar:";
+    cin >> rgm;
+    
+    for (auto& aluno : alunos)
+      if (aluno.rgm == rgm.a) {
+        a = aluno
+        encontrado = true;
+        break
+        }
+      
+      if (encontrado = true){
+         // Editar nome do aluno
+        cout << "\nDigite o novo nome (ou pressione ENTER para não alterar): ";
+        cin.ignore();  // Limpa o buffer do cin
+        string novoNome;
+        getline(cin, novoNome);
+        if (!novoNome.empty()) {
+            a.nome = novoNome;  // Se o novo nome não estiver vazio, atualiza
+        }
+        
+        system("cls")
+        
+        cout << "\n Insira a nova nota A1:";
+        int novaNotaA1;
+        cin >> novaNotaA1;
+        while (novaNotaA1 < 0 || > 5) {
+          cout << "Insira uma nota válida (0-5)"
+          cin >> novaNotaA1
+      }
+      a.A1 = novaNotaA1;
+}
+      system("cls")
+      cout << "\n Insira a nova nota A2:";
+      int novaNotaA2;
+      cin >> novaNotaA2;
+      while (novaNotaA2 < 0 || > 5) {
+        cout << "Insira uma nota válida (0-5)"
+        cin >> novaNotaA2
+      }
+      a.A2 = novaNotaA2;
+}
+
+      float novaMedia = (a.A1 < a.A2 ? a.AF + a.A2 : a.A1 + a.AF);
+      situacao = novaMedia >= 6 ? "Aprovado c/ AF" : "Reprovado";
+      cout << "\n Situacao do Aluno:" situacao << endl;
+      } else {
+      cout << "\n Aluno nao encontrado." << endl;
+      }
+}
+      
+
 int Filtrar(const vector<Aluno>& alunos) {
     int opcaofiltro;
     cout << "\nOrdenar por...";
