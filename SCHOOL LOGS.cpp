@@ -70,7 +70,19 @@ void EditarAluno(vector<Aluno>& alunos) {
         if (!novoNome.empty()) {
             a.nome = novoNome;  // Se o novo nome não estiver vazio, atualiza
         }
-        
+
+	cout << "\nDigite o novo rgm do aluno:";
+	string novoRGM;
+	cin.ignore();
+	get.line(cin, novoRGM);
+
+	if (!novoRGM.empty()) {
+		while (novoRGM.length() != 8) {
+		cout << "\n Insirar um rgm valido de 8 digitos:"
+		getline (cin,novoRGM);
+	} else {
+	a.rgm = novoRGM
+}
         system("cls")
         
         cout << "\n Insira a nova nota A1:";
@@ -198,9 +210,10 @@ int main() {
         cout << "\n Menu \n";
         cout << "1. Tabela de Notas\n";
         cout << "2. Incluir Notas\n";
-        cout << "3. Filtrar\n";
-        cout << "4. Creditos\n";
-        cout << "5. Sair\n";
+	cout << "3. Editar Alunos\n";
+        cout << "4. Filtrar\n";
+        cout << "5. Creditos\n";
+        cout << "6. Sair\n";
         cout << "Escolha uma opcao: ";
         cin >> opcao;
 // cria um laço de repetição que tem como principio o print do menu, tendo 5 opções, dependendo do input (1-5) o console retorna uma função especifica, cada uma dessas funções está armazenada em uma switch case, o input recebido será declarado pelo computador como a opção escolhida pelo usuario
@@ -298,8 +311,11 @@ int main() {
                 system("cls");
                 break;
 // É printado a logo do projeto, o console printa o nome dos integrantes, pede o enter para prosseguir, ignore vai ignorar o buffer anterior, o cin.get vai pedir o enter e o system cls vai limpar o terminal, o código se encerra
-
-            case 5:
+	    case 5:
+		system("cls");
+		EditarAluno();
+		break;
+            case 6:
                 cout << "Saindo...";
                 break;
 // O mais facil, o console printa saindo... e o codigo se encerra
