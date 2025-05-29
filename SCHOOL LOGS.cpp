@@ -54,13 +54,13 @@ void EditarAluno(vector<Aluno>& alunos) {
     cout << "\n Insira o RGM do Aluno que deseja editar:";
     cin >> rgm;
     
-    for (auto& aluno : alunos)
+    for (auto& aluno : alunos) {
       if (aluno.rgm == rgm.a) {
         a = aluno
         encontrado = true;
-        break
+        break;
         }
-      
+}
       if (encontrado = true){
          // Edita o nome do aluno
         cout << "\nDigite o novo nome (ou pressione ENTER para não alterar): ";
@@ -96,7 +96,13 @@ void EditarAluno(vector<Aluno>& alunos) {
       float novaMedia = (a.A1 < a.A2 ? a.AF + a.A2 : a.A1 + a.AF);
       situacao = novaMedia >= 6 ? "Aprovado c/ AF" : "Reprovado";
       cout << "\n Situacao do Aluno:" situacao << endl;
-      cout << "\nNome alterado para:" << a.nome << "- Nota A1:" << a.A1 "- Nota A2:" << a.A2 "- Situacao:" << situacao << endl;
+      system("cls");
+	cout << "\nSituacao do Aluno: " << situacao << endl;
+	cout << "\nNome alterado para: " << a.nome 
+     	<< " - Nota A1: " << a.A1 
+     	<< " - Nota A2: " << a.A2 
+     	<< " - Situacao: " << situacao << endl;
+
       } else {
       cout << "\n Aluno nao encontrado." << endl;
       }
